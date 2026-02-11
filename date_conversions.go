@@ -6,8 +6,8 @@ import (
 )
 
 const (
-	daysPerYearApprox     = 365.25
-	daysPerMonthCoeff     = 30.6001
+	DaysPerYearApprox     = 365.25
+	DaysPerMonthCoeff     = 30.6001
 	JulianCenturyBaseline = 2451545.0
 )
 
@@ -42,8 +42,8 @@ func ConvertToJulian(parsedDate time.Time) float64 {
 
 	D := float64(day) + dayFrac
 
-	JD := math.Floor(float64(daysPerYearApprox)*float64(year+4716)) +
-		math.Floor(daysPerMonthCoeff*float64(month+1)) +
+	JD := math.Floor(float64(DaysPerYearApprox)*float64(year+4716)) +
+		math.Floor(DaysPerMonthCoeff*float64(month+1)) +
 		float64(D) + float64(B) - 1524.5
 	return JD
 }
