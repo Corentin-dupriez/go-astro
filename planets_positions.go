@@ -13,7 +13,11 @@ func CalculateMeanLongitude(T float64) float64 {
 }
 
 func CalculateMeanAnomaly(T float64) float64 {
-	return 357.52911 + 35999.05029*T - 0.0001537*(T*T)
+	anomaly := 357.52911 + 35999.05029*T - 0.0001537*(T*T)
+	if anomaly > 360 {
+		anomaly = math.Mod(anomaly, 360)
+	}
+	return anomaly
 }
 
 func CalculateOrbitEccentricity(T float64) float64 {

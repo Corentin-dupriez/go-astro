@@ -21,5 +21,6 @@ func main() {
 }
 
 func PrintLocationInfo(T time.Time, locationInfo Location) {
-	fmt.Printf(`For date %s: Mean longitude: %.6f, Mean anomaly: %.6f, Eccentricity: %.6f`, T, locationInfo.meanLongitude, locationInfo.meanAnomaly, locationInfo.eccentricity)
+	fmt.Printf("For date %s: \n - Mean longitude: %.6f,\n - Mean anomaly: %.6f,\n - Eccentricity: %.6f,\n - Equation of center: %.6f,\n - True anomaly: %.6f,\n - True longitude: %.6f,\n - Distance: %.6f",
+		T, locationInfo.meanLongitude, locationInfo.meanAnomaly, locationInfo.eccentricity, locationInfo.equationOfCenter, locationInfo.trueAnomaly, locationInfo.trueLongitude, locationInfo.distance)
 }
