@@ -18,6 +18,8 @@ func main() {
 	fmt.Println(meanLongitude)
 	location := ComputeLocation(timePassedSinceReference)
 	PrintLocationInfo(ParsedDate, location)
+	cartesianCoordinates := CalculateCartesianCoordinates(location.trueLongitude, location.distance)
+	fmt.Println(cartesianCoordinates)
 }
 
 func PrintLocationInfo(T time.Time, locationInfo Location) {

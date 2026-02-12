@@ -43,6 +43,18 @@ func CalculateSunDistance(eccentricity float64, trueAnomaly float64) float64 {
 	return (1.000001018 * (1 - (eccentricity * eccentricity))) / (1 + eccentricity*math.Cos(trueAnomaly))
 }
 
+func CalculateCartesianCoordinates(trueLongitude float64, distance float64) CartesianCoordinates {
+	rad := trueLongitude * math.Pi / 180.0
+	x := distance * math.Cos(rad)
+	y := distance * math.Sin(rad)
+	z := 0.0
+	return CartesianCoordinates{
+		x,
+		y,
+		z,
+	}
+}
+
 type Location struct {
 	meanLongitude    float64
 	meanAnomaly      float64
@@ -51,6 +63,12 @@ type Location struct {
 	trueLongitude    float64
 	trueAnomaly      float64
 	distance         float64
+}
+
+type CartesianCoordinates struct {
+	x float64
+	y float64
+	z float64
 }
 
 func ComputeLocation(T float64) Location {
