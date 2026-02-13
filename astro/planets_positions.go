@@ -92,3 +92,9 @@ func ComputeLocation(T float64) Location {
 		Distance:         distance,
 	}
 }
+
+func CalculateCoordinatesFromEpoch(T float64) CartesianCoordinates {
+	location := ComputeLocation(T)
+	coordinates := CalculateCartesianCoordinates(location.TrueLongitude, location.Distance)
+	return coordinates
+}

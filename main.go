@@ -15,12 +15,8 @@ func main() {
 	fmt.Println(JulianDate)
 	timePassedSinceReference := astro.CenturiesPassedSinceReference(JulianDate)
 	fmt.Println(timePassedSinceReference)
-	meanLongitude := astro.CalculateMeanLongitude(timePassedSinceReference)
-	fmt.Println(meanLongitude)
-	location := astro.ComputeLocation(timePassedSinceReference)
-	PrintLocationInfo(ParsedDate, location)
-	cartesianCoordinates := astro.CalculateCartesianCoordinates(location.TrueLongitude, location.Distance)
-	fmt.Println(cartesianCoordinates)
+	grid := astro.CreateGrid(40)
+	fmt.Println(grid)
 }
 
 func PrintLocationInfo(T time.Time, locationInfo astro.Location) {
