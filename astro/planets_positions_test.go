@@ -78,3 +78,63 @@ func TestCalculateEquationOfCenter(t *testing.T) {
 		}
 	}
 }
+
+func TestCalculateTrueLongitude(t *testing.T) {
+	tests := []struct {
+		name             string
+		meanLongitude    float64
+		equationOfCenter float64
+		want             float64
+	}{
+		{"Test true longitude", 1.0, 1.0, 2.0},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CalculateTrueLongitude(tt.meanLongitude, tt.equationOfCenter)
+			if math.Abs(got-tt.want) > 1e-6 {
+				t.Errorf("got %.6f, want %.6f", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCalculateTrueAnomaly(t *testing.T) {
+	tests := []struct {
+		name             string
+		meanAnomaly      float64
+		equationOfCenter float64
+		want             float64
+	}{
+		{"Test true anomaly", 1.0, 1.0, 2.0},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CalculateTrueAnomaly(tt.meanAnomaly, tt.equationOfCenter)
+			if math.Abs(got-tt.want) > 1e-6 {
+				t.Errorf("got %.6f, want %.6f", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestCalculateSunDistance(t *testing.T) {
+	tests := []struct {
+		name         string
+		eccentricity float64
+		trueAnomaly  float64
+		want         float64
+	}{
+		{"Test J2000", 0.016708634, 357.52911, 0.986238},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := CalculateSunDistance(tt.eccentricity, tt.trueAnomaly)
+			if math.Abs(got-tt.want) > 1e-6 {
+				t.Errorf("got %.6f, want %.6f", got, tt.want)
+			}
+		})
+	}
+}
