@@ -25,4 +25,4 @@ jobs:
       run: go build 
 
     - name: Test
-      run: go test -v ./astro
+      run: go test -v ./...
