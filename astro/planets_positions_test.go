@@ -12,7 +12,7 @@ func TestCalculateMeanLongitude(T *testing.T) {
 		want       float64
 	}{
 		{"Test J2000", 0.0, 280.46646},
-		{"Test 2026-2-07", 0.2610347951048301, 317.920057},
+		{"Test 2026-02-07", 0.2610347951048301, 317.920057},
 	}
 
 	for _, tt := range tests {
@@ -49,11 +49,30 @@ func TestCalculateOrbitEccentricity(t *testing.T) {
 		want       float64
 	}{
 		{"Test J2000", 0.0, 0.016708634},
-		{"Test Test_2026-02-07", 0.2610347951048301, 0.016698},
+		{"Test Test 2026-02-07", 0.2610347951048301, 0.016698},
 	}
 
 	for _, tt := range tests {
 		got := CalculateOrbitEccentricity(tt.julianDate)
+		if math.Abs(got-tt.want) > 1e-6 {
+			t.Errorf("got %.6f, want %.6f", got, tt.want)
+		}
+	}
+}
+
+func TestCalculateEquationOfCenter(t *testing.T) {
+	tests := []struct {
+		name        string
+		julianDate  float64
+		meanAnomaly float64
+		want        float64
+	}{
+		{"Test J2000", 0.0, 357.52911, -0.084301},
+		{"Test 2026-02-07", 0.2610347951048301, 34.533816, 1.103590},
+	}
+
+	for _, tt := range tests {
+		got := CalculateEquationOfCenter(tt.julianDate, tt.meanAnomaly)
 		if math.Abs(got-tt.want) > 1e-6 {
 			t.Errorf("got %.6f, want %.6f", got, tt.want)
 		}

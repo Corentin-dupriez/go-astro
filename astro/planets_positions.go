@@ -26,6 +26,7 @@ func CalculateOrbitEccentricity(T float64) float64 {
 }
 
 func CalculateEquationOfCenter(T float64, M float64) float64 {
+	M = M * math.Pi / 180.0
 	C := (1.914602-0.004817*T-0.000014*(T*T))*math.Sin(M) +
 		(0.019993-0.000101*T)*math.Sin(2*M) +
 		0.000289*math.Sin(3*M)
