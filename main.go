@@ -9,7 +9,7 @@ import (
 func main() {
 	ParsedDate, err := time.Parse(time.RFC3339, "2026-02-07T19:06:05Z")
 	if err != nil {
-		return
+		panic(err)
 	}
 	JulianDate := astro.ConvertToJulian(ParsedDate)
 	fmt.Println(JulianDate)
