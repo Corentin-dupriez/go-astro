@@ -1,4 +1,5 @@
-package main
+// Package astro contains all the calculations related to date conversion and calculations of planets positions
+package astro
 
 import "math"
 
@@ -56,13 +57,13 @@ func CalculateCartesianCoordinates(trueLongitude float64, distance float64) Cart
 }
 
 type Location struct {
-	meanLongitude    float64
-	meanAnomaly      float64
-	eccentricity     float64
-	equationOfCenter float64
-	trueLongitude    float64
-	trueAnomaly      float64
-	distance         float64
+	MeanLongitude    float64
+	MeanAnomaly      float64
+	Eccentricity     float64
+	EquationOfCenter float64
+	TrueLongitude    float64
+	TrueAnomaly      float64
+	Distance         float64
 }
 
 type CartesianCoordinates struct {
@@ -81,12 +82,12 @@ func ComputeLocation(T float64) Location {
 	distance := CalculateSunDistance(eccentricity, trueAnomaly)
 
 	return Location{
-		meanLongitude:    meanLongitude,
-		meanAnomaly:      meanAnomaly,
-		eccentricity:     eccentricity,
-		equationOfCenter: equationOfCenter,
-		trueLongitude:    trueLongitude,
-		trueAnomaly:      trueAnomaly,
-		distance:         distance,
+		MeanLongitude:    meanLongitude,
+		MeanAnomaly:      meanAnomaly,
+		Eccentricity:     eccentricity,
+		EquationOfCenter: equationOfCenter,
+		TrueLongitude:    trueLongitude,
+		TrueAnomaly:      trueAnomaly,
+		Distance:         distance,
 	}
 }

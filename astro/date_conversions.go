@@ -1,4 +1,4 @@
-package main
+package astro
 
 import (
 	"math"

@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"planets_observer/astro"
 	"time"
 )
 
@@ -10,19 +11,19 @@ func main() {
 	if err != nil {
 		return
 	}
-	JulianDate := ConvertToJulian(ParsedDate)
+	JulianDate := astro.ConvertToJulian(ParsedDate)
 	fmt.Println(JulianDate)
-	timePassedSinceReference := CenturiesPassedSinceReference(JulianDate)
+	timePassedSinceReference := astro.CenturiesPassedSinceReference(JulianDate)
 	fmt.Println(timePassedSinceReference)
-	meanLongitude := CalculateMeanLongitude(timePassedSinceReference)
+	meanLongitude := astro.CalculateMeanLongitude(timePassedSinceReference)
 	fmt.Println(meanLongitude)
-	location := ComputeLocation(timePassedSinceReference)
+	location := astro.ComputeLocation(timePassedSinceReference)
 	PrintLocationInfo(ParsedDate, location)
-	cartesianCoordinates := CalculateCartesianCoordinates(location.trueLongitude, location.distance)
+	cartesianCoordinates := astro.CalculateCartesianCoordinates(location.TrueLongitude, location.Distance)
 	fmt.Println(cartesianCoordinates)
 }
 
-func PrintLocationInfo(T time.Time, locationInfo Location) {
+func PrintLocationInfo(T time.Time, locationInfo astro.Location) {
 	fmt.Printf("For date %s: \n - Mean longitude: %.6f,\n - Mean anomaly: %.6f,\n - Eccentricity: %.6f,\n - Equation of center: %.6f,\n - True anomaly: %.6f,\n - True longitude: %.6f,\n - Distance: %.6f",
-		T, locationInfo.meanLongitude, locationInfo.meanAnomaly, locationInfo.eccentricity, locationInfo.equationOfCenter, locationInfo.trueAnomaly, locationInfo.trueLongitude, locationInfo.distance)
+		T, locationInfo.MeanLongitude, locationInfo.MeanAnomaly, locationInfo.Eccentricity, locationInfo.EquationOfCenter, locationInfo.TrueAnomaly, locationInfo.TrueLongitude, locationInfo.Distance)
 }
