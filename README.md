@@ -40,8 +40,8 @@ longitude, true anomaly, and distance for a given Julian century (T).
 
 Import the astro package in your project
 
-  ```go
-    import "planets_observer/astro"
+     ```go
+       import "planets_observer/astro"
 
 ## Roadmap
 
