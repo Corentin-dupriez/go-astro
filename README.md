@@ -27,43 +27,21 @@ longitude, true anomaly, and distance for a given Julian century (T).
    cd planets_observer
 2. Ensure you have Go installed (version 1.21+ recommended):
 
-  ```bash
+    ```bash
     go version
-    ```
-
-3. Install dependencies 
+3. Install dependencies
   
-  ```bash
-    go mod tidy
-    ```
+    ```bash
+      go mod tidy
 
-## Usage 
-### As a library 
-Import the astro package in your project 
-```go
-  import "planets_observer/astro"
-```
+## Usage
 
-Example:
+### As a library
 
-```go
+Import the astro package in your project
 
-
-package main
-
-import (
-    "fmt"
-    "planets_observer/astro"
-)
-
-func main() {
-    T := 0.2107  // Julian centuries since J2000 for 2026-02-07
-    loc := astro.ComputeLocation(T)
-    fmt.Printf("Mean longitude: %f°\n", loc.MeanLongitude)
-    fmt.Printf("True longitude: %f°\n", loc.TrueLongitude)
-    fmt.Printf("Distance from Sun: %f AU\n", loc.Distance)
-}
-```
+  ```go
+    import "planets_observer/astro"
 
 ## Roadmap
 
