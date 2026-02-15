@@ -68,9 +68,9 @@ type Location struct {
 }
 
 type CartesianCoordinates struct {
-	x float64
-	y float64
-	z float64
+	X float64
+	Y float64
+	Z float64
 }
 
 func ComputeLocation(T float64) Location {
